@@ -138,9 +138,9 @@ class Huffman: #Declaracion de las variables para la creacion del arbol de Hiffm
 
 
 if __name__=="__main__":
-    #print ("\n\n......................CODIFICACION.................\n\n")
+    print ("\n\n......................CODIFICACION.................\n\n")
     mensaje = input("Ingrese la palabra u oracion: ")
-   # print ("\n\nTotal de simbolos:\n\n %s"%(len(mensaje)))
+    print ("\n\nTotal de simbolos:\n\n %s"%(len(mensaje)))
     simbolos=''
     probabilidad= []
     msm=mensaje
@@ -154,49 +154,34 @@ if __name__=="__main__":
             d+= 1
 
     symbols=dict(zip(simbolos, probabilidad))#Funcion para llamar al simbolo y a su probabilidad
-    #print ("\n\n Simbolos comprimidos: \n\n",d)
-    #print ("\n\nPROBABILIDAD DE CADA SIMBOLO: \n\n", symbols)
+    print ("\n\n Simbolos comprimidos: \n\n",d)
+    print ("\n\nPROBABILIDAD DE CADA SIMBOLO: \n\n", symbols)
 
     tiempo_inicial= time() #Funcion para determinar el timepo del programa
-
-    print(symbols)
-    
-
-
-
-
-
-
-
 
 
     #Codificacion de los simbolos 
     huffman = Huffman(symbols) #Llamamos ala clase Huffman
-    #print("\n\nSimbolos codificandos usando el arbol de Huffman: \n\n")
+    print("\n\nSimbolos codificandos usando el arbol de Huffman: \n\n")
     for symbol in symbols:
         print ("Simbolo: %s; Codificacion: %s" % (symbol, huffman.showSymbolEncoding(symbol)))
-        print(symbol)
-        print(huffman.showSymbolEncoding(symbol))
-        
         
     encoded = huffman.encode(mensaje) #Llama funcion tras funcion para el proceso de codifciacion
-    #print ("\n\Mensaje que se esta codificando: \n\n%s" % (mensaje))
-    #print("\n\nCodificacion en bits : \n\n%s" % (encoded))#Notamos el msj en bits
-    #print("\n\nLa longitud de codigo binario es: \n\n%s" % (len(encoded)))
+    print ("\n\Mensaje que se esta codificando: \n\n%s" % (mensaje))
+    print("\n\nCodificacion en bits : \n\n%s" % (encoded))#Notamos el msj en bits
+    print("\n\nLa longitud de codigo binario es: \n\n%s" % (len(encoded)))
 
     data = encoded
 
     #DECODIFICACION
-    #print ("\n\n..........................DECODIFICACION...............\n\n")
+    print ("\n\n..........................DECODIFICACION...............\n\n")
     decoded = huffman.decode(data) #Llamamos a las funciones correspondientes y el mensaje llamado data
-    #print("El codigo binario a decodificar es:\n\n", data)
-    #print("\n\nEl mensaje decodificado es: \n\n %s" % (decoded))#Imprimimos el resultado de la funcion decoded
+    print("El codigo binario a decodificar es:\n\n", data)
+    print("\n\nEl mensaje decodificado es: \n\n %s" % (decoded))#Imprimimos el resultado de la funcion decoded
 
     #Calculo para el tiempo del procedimiento
     tiempo_final= time()
     tiempo_ejecucion= tiempo_final - tiempo_inicial 
-   # print('\n\nEl tiempo de transmision es: ', tiempo_ejecucion)
+    print('\n\nEl tiempo de transmision es: ', tiempo_ejecucion)
 
 os._exit(0)
-
-
