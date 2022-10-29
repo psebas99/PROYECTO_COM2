@@ -32,8 +32,8 @@ def hammingdeco(palabra):
     
     for j in palabra:
 
-    #print(j[0]+j[1]+j[2]+j[3]+j[4]+j[5]+j[6])
-
+        print(j[0]+j[1]+j[2]+j[3]+j[4]+j[5]+j[6])
+        word = ''
         p1 = j[0]
         p2 = j[1]  
         d1 = j[2] 
@@ -59,30 +59,30 @@ def hammingdeco(palabra):
 
 
 
-        if er==3:
-            if d1==1:d1=0
-            else: d1=1
+        #if er==3:
+           # if d1==1:d1=0
+           # else: d1=1
 
-        if er==5:
-            if d2==1:d2=0
-            else: d2=1
+        #if er==5:
+            #if d2==1:d2=0
+            #else: d2=1
 
-        if er==6:
-            if d3==1:d3=0
-            else: d3=1
+        #if er==6:
+         #   if d3==1:d3=0
+          #  else: d3=1
 
-        if er==7:
-            if d4==1:d4=0
-            else: d4=1   
+        #if er==7:
+         #   if d4==1:d4=0
+          #  else: d4=1   
     
         #print(p1+p2+d1+p3+d2+d3+d4)
     
         word = d1+d2+d3+d4
-
+        print(word)
         #print(word)
 
         texto.append(word)
         tren = str(tren) + str(word)
 
-    #print(tren)
+    print(tren)
     return tren

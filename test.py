@@ -1,40 +1,97 @@
-codigo_morse = {
-    "a": ".-", "b": "-...", "c": "-.-.", "d": "-..", "e": ".", "f": "..-.", 
-    "g": "--.", "h": "....", "i": "..", "j": "·---", "k": "-.-", "l": ".-..", 
-    "m": "--", "n": "-.", "ñ": "--.--", "o": "---", "p": ".--.", "q": "--.-",
-    "r": ".-.", "s": "...", "t": "-", "u": "..-", "v": "...-", "w": ".--",
-    "x": "-..-", "y": "-.--", "z": "--..",
-    
-    "0": "-----", "1": ".----", "2": "..---", "3": "...--", "4": "....-", 
-    "5": ".....", "6": "-....", "7": "--...", "8": "---..", "9": "----.",
-    
-    ".": ".-.-.-", ",": "-.-.--", "?": "..--..", "\"": ".-..-."
+def decoder(palabra):
+    def decode_morse(mapping):
+        reversed = {}
+        for key, value in mapping.items():
+            reversed[value] = key
+        return reversed  
+
+    CHARS_TO_MORSE_CODE_MAPPING ={
+        'A': '-----.',
+        'B': '----.-',
+        'C': '----..',
+        'D': '---.--',
+        'E': '---.-.',
+        'F': '---..-',
+        'G': '---...',
+        'H': '--.---',
+        'I': '--.--.',
+        'J': '--.-.-',
+        'K': '--.-..',
+        'L': '--..--',
+        'M': '--..-.',
+        'N': '--...-',
+        'O': '--....',
+        'P': '-.----',
+        'Q': '-.---.',
+        'R': '-.--.-',
+        'S': '-.--..',
+        'T': '-.-.--',
+        'U': '-.-.-.',
+        'V': '-.-..-',
+        'W': '-.-...',
+        'X': '-..---',
+        'Y': '-..--.',
+        'Z': '-..-.-',
+        '1': '-..-..',
+        '2': '-...--',
+        '3': '-...-.',
+        '4': '-....-',
+        '5': '-.....',
+        '6': '.-----',
+        '7': '.----.',
+        '8': '.---.-',
+        '9': '.---..',
+        '0': '.--.--',
+        '.': '.--.-.',
+        ',': '.--..-',
+        '?': '.--...',
+        '_': '.-....',
     }
 
+    MORSE_CODE_TO_CHARS_MAPPING = decode_morse(CHARS_TO_MORSE_CODE_MAPPING)
 
-texto_codificado = []
+    def texto_plano(palabra):
+        english_plain_text = ''
 
-palabra = ['a', 'b', 'c', 'd', 'e', 'f','g','h', 'i', 'j', 'k', 'l', 'm', 'n', 'ñ', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y','z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.', ',', '?']
+        current_char_morse_code = ''
+        i = 0
+        while i < len(palabra) - 1:
+            # checking for each character
+            if palabra[i] == ' ':
+                # checking for word
+                if len(current_char_morse_code) == 0 and palabra[i + 1] == ' ':
+                    english_plain_text += ' '
+                    i += 1
+                else:
+                    # adding decoded character to the result
+                    english_plain_text += MORSE_CODE_TO_CHARS_MAPPING[
+                        current_char_morse_code]
+                    current_char_morse_code = ''
+            else:
+                # adding morse code char to the current character
+                current_char_morse_code += palabra[i]
+            i += 1
 
-for c in palabra:
-    if c != " " and c.lower() in codigo_morse:
-        texto_codificado.append(codigo_morse[c.lower()])
-    else:
-        texto_codificado.append(c)
+        # adding last character to the result
+        if len(current_char_morse_code) > 0:
+            english_plain_text += MORSE_CODE_TO_CHARS_MAPPING[
+                current_char_morse_code]
 
-texto_binario = []
-print("Texto codificado: {}".format(texto_codificado))
-letras = ""
-for d in texto_codificado:
-    for e in d:
-        if e!=  "-" :
-            letras += "1"
-        else:
-            letras += "0"
-    texto_binario.append(letras)
-    letras = ""
+        return english_plain_text
+    english_plain_text = texto_plano(palabra)
+
+    
+    print(english_plain_text)
+    return english_plain_text
 
 
-print("Texto codificado en binario: {}".format(texto_binario))
 
+code = ['-.---.', '-.-.-.', '---.-.', '--....', '--...-', '---.--', '-----.', '--..-.', '--.--.', '-.--..', '----.-', '-.--.-', '--....', '--....', '--....', '-.--..', '----..', '--....', '--..-.', '--....', '--..--', '---.-.', '-.--..', '-.-..-', '-----.', '---.-.', '--...-', '--..--', '-----.', '-.-..-', '--.--.', '---.--', '-----.']
+palabra = ''
 
+for e in code:
+    print(e)
+    palabra += e + ' '
+
+print(palabra)
+decoder(palabra)

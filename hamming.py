@@ -11,8 +11,6 @@ def hamming(archivo):
     
     for i in archivo :
         
-        #print(archivo) 
-                
         if archivo == "1":
             archivo = "1000"
         if archivo == "0":
@@ -45,6 +43,7 @@ def hamming(archivo):
             archivo = "0000"
         if archivo == "000":
             archivo = "0000"
+        
 
         d1=archivo[0]
         d2=archivo[1]
