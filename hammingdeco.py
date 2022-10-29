@@ -32,7 +32,7 @@ def hammingdeco(palabra):
     
     for j in palabra:
 
-        print(j[0]+j[1]+j[2]+j[3]+j[4]+j[5]+j[6])
+        #print(j[0]+j[1]+j[2]+j[3]+j[4]+j[5]+j[6])
         word = ''
         p1 = j[0]
         p2 = j[1]  
@@ -78,7 +78,7 @@ def hammingdeco(palabra):
         #print(p1+p2+d1+p3+d2+d3+d4)
     
         word = d1+d2+d3+d4
-        print(word)
+        #print(word)
         #print(word)
 
         texto.append(word)

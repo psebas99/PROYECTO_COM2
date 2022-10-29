@@ -41,7 +41,7 @@ def hoffman(texto):
         '.': '.--.-.',
         ',': '.--..-',
         '?': '.--...',
-        '_': '.-....',
+        ' ': '.-....',
     }
 
     # function to encode plain English text to morse code
@@ -50,11 +50,11 @@ def hoffman(texto):
         for char in english_plain_text:
             # checking for space
             # to add single space after every character and double space after every word
-            if char == ' ':
-                morse_code += '  '
-            else:
+            #if char == ' ':
+               # morse_code += '  '
+            #else:
                 # adding encoded morse code to the result
-                morse_code += CHARS_TO_MORSE_CODE_MAPPING[char.upper()] + ' '
+            morse_code += CHARS_TO_MORSE_CODE_MAPPING[char.upper()] + ' '
         return morse_code
 
     morse_code = to_morse_code(texto)

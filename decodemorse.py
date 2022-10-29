@@ -45,6 +45,7 @@ def decoder(palabra):
         '.': '.--.-.',
         ',': '.--..-',
         '?': '.--...',
+        ' ': '.-....',
     }
 
     MORSE_CODE_TO_CHARS_MAPPING = decode_morse(CHARS_TO_MORSE_CODE_MAPPING)
@@ -82,7 +83,3 @@ def decoder(palabra):
     
     print(english_plain_text)
     return english_plain_text
-
-
-palabra = input("Ingrese el morse:" )
-decoder(palabra)
